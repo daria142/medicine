@@ -893,6 +893,12 @@ p:last-child { margin-bottom: 0; }
   margin-bottom: 0.25rem;
 }
 
+.program-header p {
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  font-size: 0.875rem;
+}
+
 .program-body {
   padding: 1.5rem;
   flex: 1;
