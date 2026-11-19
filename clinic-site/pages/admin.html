@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Данные сайта | [НАЗВАНИЕ КЛИНИКИ]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .admin-grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 800px) { .admin-grid { grid-template-columns: 1fr 1fr; } }
+    .admin-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1rem 0 2rem; }
+    .admin-note { font-size: 0.9375rem; color: var(--gray-600); }
+    #status { min-height: 1.5rem; font-weight: 600; color: var(--blue-800); }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo"><span>Данные сайта</span></a>
+      <div class="header-actions">
+        <a href="../index.html" class="btn btn-secondary btn-sm">На сайт</a>
+      </div>
+    </div>
+  </header>
+  <main class="content-section">
+    <div class="container" data-no-bind>
+      <h1>Общие данные клиники</h1>
+      <p class="admin-note">Одно поле меняет эту подстановку на всех страницах. Например, телефон в шапке, подвале и текстах — это одно значение «ТЕЛЕФОН».</p>
+      <div class="alert-info">Кнопка «Показать на этом компьютере» сохраняет данные только в этом браузере. Чтобы то же самое увидели пациенты на хостинге, нажмите «Скачать site-data.js» и замените им файл <code>js/site-data.js</code> перед загрузкой сайта.</div>
+      <p id="status"></p>
+      <div class="admin-actions">
+        <button class="btn btn-primary" type="button" id="save-local">Показать на этом компьютере</button>
+        <button class="btn btn-secondary" type="button" id="download-js">Скачать site-data.js</button>
+        <button class="btn btn-secondary" type="button" id="download-json">Скачать JSON</button>
+        <label class="btn btn-secondary">Загрузить JSON<input id="upload-json" type="file" accept="application/json" hidden></label>
+        <button class="btn btn-secondary" type="button" id="reset-local">Сбросить локальные правки</button>
+      </div>
+      <form id="admin-form" class="admin-grid"></form>
+    </div>
+  </main>
+  <script src="../js/site-data.js"></script>
+  <script src="../js/apply-data.js"></script>
+  <script>
+    (function () {
+      var form = document.getElementById("admin-form");
+      var status = document.getElementById("status");
+      var data = window.ClinicData.get();
+      var keys = Object.keys(window.SITE_DEFAULTS);
+
+      var groups = [
+        ["Название и контакты", ["НАЗВАНИЕ КЛИНИКИ", "название-клиники.ru", "ГОРОД", "АДРЕС", "ЭТАЖ/ВХОД", "ТЕЛЕФОН", "РЕЖИМ РАБОТЫ"]],
+        ["Цены и акция", ["ЦЕНА", "ЦЕНА ОТ", "СТАРАЯ ЦЕНА", "НОВАЯ ЦЕНА", "ПРОЦЕНТ", "УСЛОВИЯ И СРОК", "ДАТА"]],
+        ["Врачи", ["СТАЖ", "N", "КАТЕГОРИЯ", "СПЕЦИАЛЬНОСТЬ", "ФАМИЛИЯ ИМЯ ОТЧЕСТВО", "ФАМИЛИЯ И.О.", "КОМПЕТЕНЦИЯ 1", "КОМПЕТЕНЦИЯ 2", "КОМПЕТЕНЦИЯ 3", "ВУЗ", "КУРС", "ГОД", "Сегодня в ЧЧ:ММ"]],
+        ["Документы", ["ПОЛНОЕ НАИМЕНОВАНИЕ", "ЮРИДИЧЕСКИЙ АДРЕС", "ИНН", "ОГРН", "НОМЕР ЛИЦЕНЗИИ", "СРОК"]],
+        ["Доверие и оборудование", ["РЕЙТИНГ", "ПЛОЩАДКА 1", "ПЛОЩАДКА 2", "ОБОРУДОВАНИЕ 1", "ОБОРУДОВАНИЕ 2", "КЛАСС/МОДЕЛЬ ОБОРУДОВАНИЯ", "КЛАСС/МОДЕЛЬ"]],
+        ["Как добраться", ["УЛИЦА", "НАЗВАНИЕ ОСТАНОВКИ", "НОМЕРА", "ОПИСАНИЕ ПАРКОВКИ, ЧИСЛО МЕСТ, УСЛОВИЯ", "ОПИСАНИЕ БЕЗБАРЬЕРНОГО ВХОДА", "ОПИСАНИЕ", "ИНСТРУКЦИЯ ВРАЧА", "УТОЧНИТЬ ДЛЯ КЛИНИКИ", "УТОЧНИТЬ ДЛЯ КАЖДОГО АНАЛИЗА", "УТОЧНИТЬ"]]
+      ];
+
+      function field(key) {
+        var wrap = document.createElement("div");
+        wrap.className = "form-group";
+        var label = document.createElement("label");
+        label.className = "form-label";
+        label.textContent = key;
+        label.htmlFor = "f-" + key;
+        var input = document.createElement("input");
+        input.className = "form-input";
+        input.id = "f-" + key;
+        input.name = key;
+        input.value = data[key] || "";
+        input.autocomplete = "off";
+        wrap.appendChild(label);
+        wrap.appendChild(input);
+        return wrap;
+      }
+
+      var used = {};
+      groups.forEach(function (g) {
+        var block = document.createElement("section");
+        block.className = "content-block";
+        block.style.margin = "0";
+        var h = document.createElement("h2");
+        h.textContent = g[0];
+        block.appendChild(h);
+        g[1].forEach(function (key) {
+          if (!window.SITE_DEFAULTS.hasOwnProperty(key)) return;
+          used[key] = true;
+          block.appendChild(field(key));
+        });
+        form.appendChild(block);
+      });
+
+      function collect() {
+        var obj = {};
+        form.querySelectorAll("input").forEach(function (input) {
+          obj[input.name] = input.value;
+        });
+        return obj;
+      }
+
+      function file(name, text, type) {
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(new Blob([text], { type: type }));
+        a.download = name;
+        a.click();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+      }
+
+      document.getElementById("save-local").onclick = function () {
+        window.ClinicData.saveLocal(collect());
+        status.textContent = "Сохранено в этом браузере. Обновите любую страницу сайта.";
+      };
+      document.getElementById("download-js").onclick = function () {
+        var merged = Object.assign({}, window.SITE_DEFAULTS, collect());
+        var body = "window.SITE_DEFAULTS = " + JSON.stringify(merged, null, 2) + ";\n";
+        file("site-data.js", body, "text/javascript");
+        status.textContent = "Файл скачан. Замените им js/site-data.js и снова загрузите сайт на хостинг.";
+      };
+      document.getElementById("download-json").onclick = function () {
+        file("clinic-data.json", JSON.stringify(collect(), null, 2), "application/json");
+      };
+      document.getElementById("upload-json").onchange = function (e) {
+        var f = e.target.files[0];
+        if (!f) return;
+        var reader = new FileReader();
+        reader.onload = function () {
+          var obj = JSON.parse(reader.result);
+          Object.keys(obj).forEach(function (k) {
+            var input = form.querySelector('[name="' + CSS.escape(k) + '"]');
+            if (input) input.value = obj[k];
+          });
+          status.textContent = "JSON загружен в форму. Нажмите «Показать на этом компьютере» или скачайте site-data.js.";
+        };
+        reader.readAsText(f);
+      };
+      document.getElementById("reset-local").onclick = function () {
+        window.ClinicData.clearLocal();
+        status.textContent = "Локальные правки удалены. После обновления страниц снова видны значения из site-data.js.";
+      };
+    })();
+  </script>
+</body>
+</html>

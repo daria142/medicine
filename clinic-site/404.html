@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Страница не найдена — [НАЗВАНИЕ КЛИНИКИ]</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="preloader" class="hidden"></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <span>[НАЗВАНИЕ КЛИНИКИ]</span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-secondary btn-sm">На главную</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="error-page">
+    <div>
+      <div class="error-code">404</div>
+      <h1 class="error-title">Страница не найдена</h1>
+      <p class="error-text">
+        Возможно, адрес изменился или страница была удалена. 
+        Вы можете вернуться на главную или записаться на приём — мы поможем найти нужного врача.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;">
+        <a href="index.html" class="btn btn-primary btn-lg">На главную</a>
+        <a href="pages/contacts.html" class="btn btn-secondary btn-lg">Контакты</a>
+        <button class="btn btn-secondary btn-lg" data-open-booking>Записаться на приём</button>
+      </div>
+      <p style="margin-top:2.5rem;font-size:0.9375rem;color:var(--gray-500);">
+        Если ситуация срочная — позвоните <a href="tel:[ТЕЛЕФОН]">[ТЕЛЕФОН]</a> или вызовите скорую 103 / 112.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer" style="margin-top:0;">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding-top:0;">
+        <div>© [ГОД] [НАЗВАНИЕ КЛИНИКИ]</div>
+        <div class="footer-legal">
+          <a href="index.html">Главная</a>
+          <a href="pages/contacts.html">Контакты</a>
+        </div>
+      </div>
+      <p class="disclaimer">
+        Имеются противопоказания. Необходима консультация специалиста.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Minimal booking for error page -->
+  <div class="booking-overlay" id="booking-overlay">
+    <div class="booking-panel">
+      <div class="booking-header">
+        <h3>Онлайн-запись</h3>
+        <button class="booking-close" aria-label="Закрыть">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="booking-body">
+        <p style="margin-bottom:1.5rem;color:var(--gray-600);">Оставьте контакты — администратор перезвонит и поможет выбрать направление.</p>
+        <form id="booking-form">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-group">
+            <label class="form-label" for="err-name">Имя *</label>
+            <input type="text" id="err-name" name="name" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="err-phone">Телефон *</label>
+            <input type="tel" id="err-phone" name="phone" class="form-input" required>
+          </div>
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" name="consent" required>
+              <span>Согласен(на) на обработку персональных данных *</span>
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+<script src="js/site-data.js"></script>
+  <script src="js/apply-data.js"></script>
+</body>
+</html>

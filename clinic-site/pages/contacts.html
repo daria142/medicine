@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты [НАЗВАНИЕ КЛИНИКИ] в [ГОРОД]: адрес, телефон, как добраться</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <div id="preloader">
+    <div class="loader-logo">
+      <div class="loader-pulse"></div>
+      <div class="loader-pulse"></div>
+      <div class="loader-pulse"></div>
+      <div class="loader-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+      </div>
+    </div>
+    <div class="loader-text">[НАЗВАНИЕ КЛИНИКИ]</div>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">
+        <div class="logo-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <span>[НАЗВАНИЕ КЛИНИКИ]</span>
+      </a>
+      <nav class="nav-desktop">
+        <a href="services.html" class="nav-link">Направления</a>
+        <a href="prices.html" class="nav-link">Цены</a>
+        <a href="doctors.html" class="nav-link">Врачи</a>
+        <a href="contacts.html" class="nav-link active">Контакты</a>
+      </nav>
+      <div class="header-actions">
+        <button class="btn btn-primary btn-sm" data-open-booking>Записаться</button>
+        <button class="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav">
+    <div class="mobile-nav-inner">
+      <a href="../index.html" class="mobile-nav-link">Главная</a>
+      <a href="contacts.html" class="mobile-nav-link">Контакты</a>
+      <a href="prices.html" class="mobile-nav-link">Цены</a>
+    </div>
+  </div>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb">
+          <a href="../index.html">Главная</a>
+          <span>→</span>
+          <span>Контакты</span>
+        </nav>
+        <h1>Контакты и как нас найти</h1>
+        <p>Мы находимся по адресу [АДРЕС]. Подскажем, как добраться удобнее всего.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div style="display:grid;gap:2rem;grid-template-columns:1fr;align-items:start;" class="reveal">
+          <style>
+            @media (min-width:900px) {
+              .contacts-grid { grid-template-columns: 1fr 1fr !important; }
+            }
+          </style>
+          <div class="contacts-grid" style="display:grid;gap:2rem;">
+            <div class="content-block">
+              <h2>Карточка связи</h2>
+              <div class="footer-contact-item" style="margin-bottom:1rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--blue-600);"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                <div>
+                  <strong>Адрес</strong><br>
+                  [ГОРОД], [АДРЕС], [ЭТАЖ/ВХОД]
+                </div>
+              </div>
+              <div class="footer-contact-item" style="margin-bottom:1rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--blue-600);"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <div>
+                  <strong>Режим работы</strong><br>
+                  [РЕЖИМ РАБОТЫ]
+                </div>
+              </div>
+              <div class="footer-contact-item" style="margin-bottom:1rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--blue-600);"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
+                <div>
+                  <strong>Телефон</strong><br>
+                  <a href="tel:[ТЕЛЕФОН]">[ТЕЛЕФОН]</a>
+                </div>
+              </div>
+              <div class="footer-contact-item" style="margin-bottom:1rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="color:var(--blue-600);"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                <div>
+                  <strong>Почта</strong><br>
+                  <a href="mailto:info@[название-клиники.ru]">info@[название-клиники.ru]</a>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap;">
+                <a href="https://wa.me/" class="btn btn-primary" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="https://t.me/" class="btn btn-secondary" target="_blank" rel="noopener">Telegram</a>
+                <button class="btn btn-secondary" data-open-booking>Заказать звонок</button>
+              </div>
+              <p style="font-size:0.8125rem;color:var(--gray-500);margin-top:1rem;">Время ответа в мессенджерах: [N] минут в рабочее время.</p>
+            </div>
+
+            <div class="content-block">
+              <h2>Как добраться</h2>
+              <h3 style="margin-top:0;">На автомобиле</h3>
+              <p>Заезд с [УЛИЦА], парковка [ОПИСАНИЕ ПАРКОВКИ, ЧИСЛО МЕСТ, УСЛОВИЯ].</p>
+              <h3>На общественном транспорте</h3>
+              <p>Остановка [НАЗВАНИЕ ОСТАНОВКИ], маршруты [НОМЕРА], далее около [N] м пешком.</p>
+              <h3>Для маломобильных пациентов</h3>
+              <p>[ОПИСАНИЕ БЕЗБАРЬЕРНОГО ВХОДА]. При необходимости помощи сотрудника — позвоните [ТЕЛЕФОН].</p>
+              <div style="margin-top:1.5rem;height:220px;background:var(--gray-100);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;color:var(--gray-400);border:1px solid var(--gray-200);">
+                Интерактивная карта<br>(виджет Яндекс/Google Карт)
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block mt-4 reveal">
+          <h2>Задать вопрос или заказать звонок</h2>
+          <form id="contact-form" style="max-width:480px;">
+            <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="form-group">
+              <label class="form-label" for="c-name">Имя *</label>
+              <input type="text" id="c-name" name="name" class="form-input" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-phone">Телефон *</label>
+              <input type="tel" id="c-phone" name="phone" class="form-input" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Удобный способ связи</label>
+              <select name="method" class="form-select">
+                <option value="call">Звонок</option>
+                <option value="whatsapp">WhatsApp</option>
+                <option value="telegram">Telegram</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="c-msg">Сообщение</label>
+              <textarea id="c-msg" name="message" class="form-textarea" rows="3" placeholder="Не пишите здесь подробности диагноза"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-checkbox">
+                <input type="checkbox" name="consent" required>
+                <span>Согласен(на) на <a href="#">обработку персональных данных</a> *</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Жду ответа</button>
+          </form>
+          <p style="font-size:0.8125rem;color:var(--gray-500);margin-top:1rem;">
+            После отправки: «Спасибо! Мы свяжемся с вами в течение [N] минут в рабочее время. Если ситуация срочная, позвоните [ТЕЛЕФОН] или вызовите скорую 103 / 112».
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© [ГОД] [НАЗВАНИЕ КЛИНИКИ]</div>
+        <div class="footer-legal">
+          <a href="../index.html">Главная</a>
+          <a href="#">Политика конфиденциальности</a>
+        </div>
+      </div>
+      <p class="disclaimer">Имеются противопоказания. Необходима консультация специалиста. Информация на сайте не заменяет очный приём врача и не является публичной офертой.</p>
+    </div>
+  </footer>
+
+  <nav class="mobile-bottom-bar">
+    <a href="tel:[ТЕЛЕФОН]" class="mobile-bar-btn">Позвонить</a>
+    <a href="https://wa.me/" class="mobile-bar-btn" target="_blank" rel="noopener">Мессенджер</a>
+    <button class="mobile-bar-btn primary" data-open-booking>Записаться</button>
+  </nav>
+
+  <div class="booking-overlay" id="booking-overlay">
+    <div class="booking-panel">
+      <div class="booking-header">
+        <h3>Онлайн-запись</h3>
+        <button class="booking-close" aria-label="Закрыть"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg></button>
+      </div>
+      <div class="booking-body">
+        <p style="margin-bottom:1rem;color:var(--gray-600);">Оставьте контакты — перезвоним и запишем.</p>
+        <form id="booking-form">
+          <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+          <div class="form-group"><label class="form-label">Имя *</label><input type="text" name="name" class="form-input" required></div>
+          <div class="form-group"><label class="form-label">Телефон *</label><input type="tel" name="phone" class="form-input" required></div>
+          <div class="form-group"><label class="form-checkbox"><input type="checkbox" name="consent" required><span>Согласие на обработку ПДн *</span></label></div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+<script src="../js/site-data.js"></script>
+  <script src="../js/apply-data.js"></script>
+</body>
+</html>
